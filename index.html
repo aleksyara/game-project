@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="www.twitter.com/cheeriottis">
+  <title>BlackJack Game</title>
+  <link href="https://fonts.googleapis.com/css?family=Asap+Condensed:600i,700" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href="css/card-deck-css/css/cardstarter.css" rel="stylesheet" />
+  <link href="css/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css">
+  <script defer src="js/main.js"></script>
+ </head>
+ 
+<body>
+  <header>
+    <h1>Blackjack</h1>
+  </header>
+ 
+  <div class="new-game">
+    <h1>kjhgjkhgkjhgjkhgjh</h1>
+    <!-- input field player name -->
+    <!-- input field total cash -->
+    <!-- button start game -->
+  </div>
+
+  <div class="main-area">
+
+    <div class="left-panel">
+      <p class="userCash">Total: $100</p>
+      <p class="userName">Player name: </p>
+      <div class="game-statistic">
+        <table>
+            <caption>Game Statistics</caption>
+            <tr></tr>
+            <tr><th>Hands Played</th><th>10</th></tr>
+            <tr><td>Player Wins</td><td>5</td></tr>
+            <tr><td>Player Loses</td><td>5</td></tr>
+            <tr><td>Winning, %</td><td>50%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="dealer-and-user-corners">
+        <div class="dealers-corner">
+          <h3>Dealer's Corner</h3>
+          <p id="dealer-score">Score:</p>
+          <div id="dealers-cards" class="my-test-class"></div>
+        </div>
+        <div class="users-corner">
+          <h3>User's Corner</h3>
+          <p id="user-score">Score:</p>
+          <div id="users-cards"></div>
+        </div>
+      </div>
+      
+      <div>
+        <ul>
+          <a href="#" class="action-button animate hit">HIT</a>
+          <a href="#" class="action-button animate stand">STAND</a>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+
+  <a href="#" class="action-button animate bet"><input type="number" placeholder="$$$ Enter Your Bet"><input type="submit"></a>
+
+ 
+     
+
+  <h3>Master Deck</h3>
+  <section id="master-deck-container" class="card-container"></section>
+  <a href="#" class="action-button animate blue">RE-SHUFFLE DECK</a>
+  <h3>Shuffled Deck</h3>
+  <section id="shuffled-deck-container" class="card-container"></section>
+
+</body>
+
