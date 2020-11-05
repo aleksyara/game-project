@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="www.twitter.com/cheeriottis">
+  <meta name="author" content="www.twitter.com/cheeriottis"><!-- do I need this? -->
   <title>BlackJack Game</title>
   <link href="https://fonts.googleapis.com/css?family=Asap+Condensed:600i,700" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
@@ -14,20 +14,30 @@
  
 <body>
   <header>
-    <h1>Blackjack</h1>
+    <h1 id="test">Blackjack Online</h1>
   </header>
+
  
   <div class="new-game">
-    <h1>kjhgjkhgkjhgjkhgjh</h1>
     <!-- input field player name -->
-    <!-- input field total cash -->
+     <!--<a href="#" class="action-button animate name" onclick="nameHandeler()"><input type="text" placeholder="Enter Your Name"></a>-->
+     <form id="name">Name: <input></input></form>
+     <button>Submit</button>
+  
+    <!-- input field total cash 
+    <a href="#" class="action-button animate bank"><input type="number" placeholder="$$$ Refill Your Bank"></a>-->
+    <form id="cash">Your Bank: <input></input></form>
+     <button id="button2">Submit</button>
+    
     <!-- button start game -->
+   
+    <a href="#" class="action-button animate start">START GAME</a>
   </div>
 
   <div class="main-area">
 
     <div class="left-panel">
-      <p class="userCash">Total: $100</p>
+      <p id="update-user-bank">Total: $100</p>
       <p class="userName">Player name: </p>
       <div class="game-statistic">
         <table>
@@ -44,12 +54,12 @@
     <div class="right-panel">
       <div class="dealer-and-user-corners">
         <div class="dealers-corner">
-          <h3>Dealer's Corner</h3>
+          <h3>Dealer</h3>
           <p id="dealer-score">Score:</p>
           <div id="dealers-cards" class="my-test-class"></div>
         </div>
         <div class="users-corner">
-          <h3>User's Corner</h3>
+          <h3 id="update-user-name">Player's name: </h3>
           <p id="user-score">Score:</p>
           <div id="users-cards"></div>
         </div>
@@ -66,14 +76,13 @@
   </div>
   
 
-  <a href="#" class="action-button animate bet"><input type="number" placeholder="$$$ Enter Your Bet"><input type="submit"></a>
+  
 
  
      
 
   <h3>Master Deck</h3>
   <section id="master-deck-container" class="card-container"></section>
-  <a href="#" class="action-button animate blue">RE-SHUFFLE DECK</a>
   <h3>Shuffled Deck</h3>
   <section id="shuffled-deck-container" class="card-container"></section>
 

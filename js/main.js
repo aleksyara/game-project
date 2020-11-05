@@ -4,7 +4,7 @@ const ranks = ['02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', '
 
 // Build a 'master' deck of 'card' objects used to create shuffled decks
 const masterDeck = buildMasterDeck();
-// renderDeckInContainer(masterDeck, document.getElementById('master-deck-container'));
+//renderDeckInContainer(masterDeck, document.getElementById('master-deck-container'));
 
 
 let user = {
@@ -36,19 +36,15 @@ const elRefShuffledDeckContainer = document.getElementById('shuffled-deck-contai
 const elRefDealersCards = document.getElementById('dealers-cards');
 const elRefUsersCards = document.getElementById('users-cards');
 const elRefUserScore = document.getElementById('user-score');
-
-// const elRefHitButton = document.getElementsByClassName('hit');
-// const elRefStandButton = document.getElementsByClassName('stand');
-// const elRefBetButton = document.getElementsByClassName('bet');
-
+//const elRefUserBank = document.getElementsById('update-user-bank');
+const elRefUserName = document.getElementById('update-user-name');
 
 
 /*----- event listeners -----*/
 document.querySelector('.hit').addEventListener('click', hitHandler);
 document.querySelector('.stand').addEventListener('click', standHandler);
-// document.querySelector('button').addEventListener('click', renderShuffledDeck);
-
-// document.querySelector('input').addEventListener('submit', playerBank);
+document.querySelector('.start').addEventListener('click', startNewGame);
+//document.getElementById('update-user-name').addEventListener('onclick', nameHandeler);
 
 
 
@@ -61,11 +57,54 @@ init();
 
 /////////////////////
 
+function init () {
+    console.log('game firing');
+    renderShuffledDeck();
+    dealTwoCardsToUserAndDealer();
+    renderDealersCards();
+    renderUsersCards();
+    countAndRenderUsersScore();
+}
+
+///
 function startNewGame() {
     console.log('start new game');
-    console.log('user: ', user);
+    nameHandeler();
     // show money and user name in user object
+    //renderUsersBank();
+    console.log('user: ', user);
 }
+//Submitting initial data
+//Name
+const btn = document.querySelector('button');
+btn.addEventListener('click', function(){
+    //console.log('button is workiing')
+    //create elemnt that we pass later
+    const li = document.createElement('li');
+    //getting value from input
+    document.getElementById('name').value;
+    const input = document.querySelector('input');
+    console.log(input.value);
+
+    li.innerText = input.value;
+    elRefUserName.innerHTML = input.value;
+})
+
+//Bank
+const btn2 = document.getElementById('button2');
+btn2.addEventListener('click', function(){
+    //console.log('button 2 is workiing')
+    //create elemnt that we pass later
+    const li = document.createElement('p');
+    // //getting value from input
+    document.getElementById('cash').value;
+    const input2 = document.querySelector('input');
+    console.log(input2.value);
+    p.innerText = input2.value;
+    elRefUserBank.innerHTML = input.value;
+})
+
+/////
 
 function hitHandler() {
     console.log('hit button click');
@@ -134,15 +173,6 @@ function checkForWinningOrLoosingHand() {
     }
 }
 
-function init () {
-    console.log('game firing');
-    renderShuffledDeck();
-    dealTwoCardsToUserAndDealer();
-    renderDealersCards();
-    renderUsersCards();
-    countAndRenderUsersScore();
-}
-
 function countAndRenderUsersScore() {
     let sum = 0;
     user.userCards.forEach(function(elem) {
@@ -150,7 +180,6 @@ function countAndRenderUsersScore() {
     });
     elRefUserScore.innerHTML = 'Score: ' + sum;
 }
-
 
 function renderDealersCards() {
     renderDeckInContainer(dealer.dealerCards, elRefDealersCards);
@@ -211,11 +240,10 @@ function renderShuffledDeck() {
     return deck;
   }
   
-//   renderShuffledDeck();
+renderShuffledDeck();
 
 
 // take our state (which our the variables we initialized in our init function)
 // and update the dom with those values
 function render(){
-
-}
+};
