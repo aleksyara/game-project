@@ -21,10 +21,10 @@ I like gambling and everything related to **Las Vegas**. This is was the first c
 1. Screenshot(s)
 
 
-!["PrintScreen 1"](https://github.com/aleksyara/game-project/photo/prntscrn1.png)
-!["PrintScreen 2"](https://github.com/aleksyara/game-project/photo/prntscrn2.png)
-!["PrintScreen 3"](https://github.com/aleksyara/game-project/photo/prntscrn3.png)
-!["PrintScreen 4"](https://github.com/aleksyara/game-project/photo/prntscrn4.png)
+!["PrintScreen 1"](photo/prntscrn1.png)
+!["PrintScreen 2"](photo/prntscrn2.png)
+!["PrintScreen 3"](photo/prntscrn3.png)
+!["PrintScreen 4"](photo/prntscrn4.png)
 
 2. Technologies Used
 
@@ -38,7 +38,7 @@ I like gambling and everything related to **Las Vegas**. This is was the first c
 Initially, I started wireframing how I wanted the final board to look like and wrote a pseudocode with the game logic. (please see below):
 
    
-!["Wireframe"](https://github.com/aleksyara/game-project/photo/wirefrae.png)
+!["Wireframe"](photo/wireframe.png)
 
                               
 4. At this work I used the following sources:
