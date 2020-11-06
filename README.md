@@ -21,10 +21,10 @@ I like gambling and everything related to **Las Vegas**. This is was the first c
 1. Screenshot(s)
 
 
-!["PrintScreen 1"](http://github.com/aleksyara/game-project/photo/prntscrn1.png)
-!["PrintScreen 2"](http://github.com/aleksyara/game-project/photo/prntscrn2.png)
-!["PrintScreen 3"](http://github.com/aleksyara/game-project/photo/prntscrn3.png)
-!["PrintScreen 4"](http://github.com/aleksyara/game-project/photo/prntscrn4.png)
+!["PrintScreen 1"](https://github.com/aleksyara/game-project/photo/prntscrn1.png)
+!["PrintScreen 2"](https://github.com/aleksyara/game-project/photo/prntscrn2.png)
+!["PrintScreen 3"](https://github.com/aleksyara/game-project/photo/prntscrn3.png)
+!["PrintScreen 4"](https://github.com/aleksyara/game-project/photo/prntscrn4.png)
 
 2. Technologies Used
 
