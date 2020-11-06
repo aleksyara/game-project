@@ -3,7 +3,7 @@ SEI 10-19 Project 01: Broweser Game
 
 
 
-                                # H1 Black Jack Online
+  # H1 Black Jack Online
 
 Please welcome my first game ever made called Blackjack Online.   
 
@@ -20,10 +20,10 @@ I like gambling and everything related to **Las Vegas**. This is was the first c
 1. Screenshot(s)
 
 
-![alt text](https://github.com/aleksyara/game-project/photo/prntscrn1.png "PrintScreen 1")
-![alt text](https://github.com/aleksyara/game-project/photo/prntscrn2.png "PrintScreen 2")
-![alt text](https://github.com/aleksyara/game-project/photo/prntscrn3.png "PrintScreen 3")
-![alt text](https://github.com/aleksyara/game-project/photo/prntscrn4.png "PrintScreen 4")
+!["PrintScreen 1"](https://github.com/aleksyara/game-project/photo/prntscrn1.png)
+!["PrintScreen 2"](https://github.com/aleksyara/game-project/photo/prntscrn2.png)
+!["PrintScreen 3"](https://github.com/aleksyara/game-project/photo/prntscrn3.png)
+!["PrintScreen 4"](https://github.com/aleksyara/game-project/photo/prntscrn4.png)
 
 2. Technologies Used
 
@@ -37,16 +37,16 @@ I like gambling and everything related to **Las Vegas**. This is was the first c
 Initially, I started wireframing how I wanted the final board to look like and wrote a pseudocode with the game logic. (please see below):
 
    
-![alt text](https://github.com/aleksyara/game-project/photo/wirefrae.png "Wireframe")
+!["Wireframe"](https://github.com/aleksyara/game-project/photo/wirefrae.png)
 
                               
 4. At this work I used the following sources:
  
-* Cards templates and shuffled functions special thanks to GA team (http://repl.it/@MichaelSiller/Use-CSS-Card-Library#index.html)
-*  Fancy Buttons (http://codepen.io/topic/buttons/picks)
+* Cards templates and shuffled functions special thanks to GA team [Cards Templates](http://repl.it/@MichaelSiller/Use-CSS-Card-Library#index.html)
+*  [Fancy Buttons](http://codepen.io/topic/buttons/picks)
 *  MDN, Stack Overflow, CSS-Tricks and etc.
  
-Player can find the game https://aleksyara.github.io/game-project.
+Player can find the game [Blackjack Online](https://aleksyara.github.io/game-project)
 
 5. Next Steps:
 
