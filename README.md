@@ -52,6 +52,7 @@ Player can find the game https://aleksyara.github.io/game-project.
 
 Unfortunately, some essential functionality haven’t been included in this game so I’m planning to add following in the future: 
 
+* Make a DRY code and re-write render function;
 * Create a SPLIT, DOUBLE DOWN, and INCURACE
 * Make a stylee looks like 8-bit style
 * Link the sound/music files
