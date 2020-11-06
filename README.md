@@ -3,14 +3,15 @@ SEI 10-19 Project 01: Broweser Game
 
 
 
-  # H1 Black Jack Online
+# Blackjack Online
+==================
 
 Please welcome my first game ever made called Blackjack Online.   
 
 I like gambling and everything related to **Las Vegas**. This is was the first city I've visited in the **United States** and I was inspired by special atmosphere. Since that time, I’ve enjoy playing Blackjack so my choice was obvious.
 
 
-### H3 Game Rules
+### Game Rules
 
 * Get 21 points on the player's first two cards (called a "blackjack" or "natural"), without a dealer blackjack.
 * Reach a final score higher than the dealer without exceeding 21; 
