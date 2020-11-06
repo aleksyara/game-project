@@ -8,10 +8,11 @@ const masterDeck = buildMasterDeck();
 
 
 let user = {
- userTotal: 0,
- userCards: [],
- userBank: 0,
- userName: ''
+    bet: null,
+    userTotal: 0,
+    userCards: [],
+    userBank: 0,
+    userName: null
 };
 
 let dealer = {
@@ -21,30 +22,47 @@ let dealer = {
 
 /*----- app's state (variables) -----*/
 
-// let shuffledDeck;
+let shuffledDeck;
 // let winner;
-// gameStatisitcs = {
-//     handsPlayed: null,
-//     playerWins: null,
-//     playerLoses: null, 
-//     winnigIndex: null
-// }
+gameStatisitcs = {
+    handsPlayed: 0,
+    playerWins: 0,
+    playerLoses: 0, 
+    winnigIndex: 0
+};
 
 
 /*----- cached element references -----*/
-const elRefShuffledDeckContainer = document.getElementById('shuffled-deck-container');
+// const elRefShuffledDeckContainer = document.getElementById('shuffled-deck-container');
 const elRefDealersCards = document.getElementById('dealers-cards');
 const elRefUsersCards = document.getElementById('users-cards');
 const elRefUserScore = document.getElementById('user-score');
-//const elRefUserBank = document.getElementsById('update-user-bank');
+const elRefDealerScore = document.getElementById('dealer-score');
+const elRefNameInput = document.getElementById('name-input');
+const elRefCashInput = document.getElementById('cash-input');
+const elRefBetInput = document.getElementById('bet-input');
+
+const elRefUserBank = document.getElementById('update-user-bank');
 const elRefUserName = document.getElementById('update-user-name');
+
+const elRefMainArea = document.getElementById('main-area');
+const elRefNewGameArea = document.getElementById('new-game-area');
+const elRefHitStandButtons = document.getElementById('hit-stand-buttons');
+const elRefBetButton = document.getElementById('bet-button');
+
+const elRefHandsPlayed = document.getElementById('hands-played');
+const elRefPlayerWins = document.getElementById('player-wins');
+const elRefPlayerLoses = document.getElementById('player-loses');
+const elRefWinning = document.getElementById('winning');
 
 
 /*----- event listeners -----*/
 document.querySelector('.hit').addEventListener('click', hitHandler);
 document.querySelector('.stand').addEventListener('click', standHandler);
-document.querySelector('.start').addEventListener('click', startNewGame);
-//document.getElementById('update-user-name').addEventListener('onclick', nameHandeler);
+//document.getElementById('update-user-name').addEventListener('click', nameHandeler);
+document.querySelector('.name-bank-submit-button').addEventListener('click', nameBankSubmitButtonClickHandeler);
+document.querySelector('.bet').addEventListener('click', betHandler);
+
 
 
 
@@ -59,52 +77,75 @@ init();
 
 function init () {
     console.log('game firing');
-    renderShuffledDeck();
-    dealTwoCardsToUserAndDealer();
-    renderDealersCards();
-    renderUsersCards();
-    countAndRenderUsersScore();
+    functionShuffleDeckOfCards();
+    elRefMainArea.classList.add('hidden-area');
+    elRefNewGameArea.classList.remove('hidden-area');
+    user.userBank = null;
+    user.userName = null;
+    renderStats();
 }
 
-///
+// ///
 function startNewGame() {
     console.log('start new game');
-    nameHandeler();
+    //nameHandeler();
     // show money and user name in user object
     //renderUsersBank();
     console.log('user: ', user);
 }
 //Submitting initial data
 //Name
-const btn = document.querySelector('button');
-btn.addEventListener('click', function(){
-    //console.log('button is workiing')
-    //create elemnt that we pass later
-    const li = document.createElement('li');
-    //getting value from input
-    document.getElementById('name').value;
-    const input = document.querySelector('input');
-    console.log(input.value);
 
-    li.innerText = input.value;
-    elRefUserName.innerHTML = input.value;
-})
+function nameBankSubmitButtonClickHandeler(){
+   let name = elRefNameInput.value;
+   let cashString = elRefCashInput.value;
+   let cash;
+   if (cashString ){
+    cash = parseInt(cashString, 10);
+   } else {
+    cash = 100;
+   } 
+   
+   if (!name){
+       name = 'Anonymous';
+   }
 
-//Bank
-const btn2 = document.getElementById('button2');
-btn2.addEventListener('click', function(){
-    //console.log('button 2 is workiing')
-    //create elemnt that we pass later
-    const li = document.createElement('p');
-    // //getting value from input
-    document.getElementById('cash').value;
-    const input2 = document.querySelector('input');
-    console.log(input2.value);
-    p.innerText = input2.value;
-    elRefUserBank.innerHTML = input.value;
-})
+   user.userName = name;
+   user.userBank = cash;
+   elRefUserName.innerHTML = 'Player\'s name: ' + name;
+   elRefUserBank.innerHTML = 'Bank: ' + cash;
+   elRefMainArea.classList.remove('hidden-area');
+   elRefNewGameArea.classList.add('hidden-area');
+};
 
-/////
+function betHandler() {
+    let bet;
+    let betString = elRefBetInput.value;
+    if (betString){
+        bet = parseInt(betString, 10);
+       } else {
+        bet = 5;
+       } 
+
+    if (bet >= user.userBank){
+        bet = user.userBank;
+    } 
+
+    user.bet = bet;
+    console.log('bet amount: ', user.bet);
+    elRefHitStandButtons.classList.remove('hidden-area');
+    elRefBetButton.classList.add('hidden-area');
+
+    user.userBank = user.userBank - bet;
+    elRefUserBank.innerHTML = 'Bank: ' + user.userBank;
+
+    dealTwoCardsToUserAndDealer();
+    renderDealersCards();
+    renderUsersCards();
+    countAndRenderUsersScore();
+
+    }
+
 
 function hitHandler() {
     console.log('hit button click');
@@ -114,7 +155,9 @@ function hitHandler() {
     countAndRenderUsersScore();
     setTimeout(function() {
         checkForWinningOrLoosingHand();
+
     }, 200);
+
 }
 
 function standHandler() {
@@ -135,8 +178,7 @@ function standHandler() {
     }
 
     console.log('dealerScore: ', dealerScore);
-    renderDealersCards();
-
+    
     let userScore = 0;
     user.userCards.forEach(function(elem) {
         userScore += elem.value
@@ -145,16 +187,82 @@ function standHandler() {
     setTimeout(function() {
         if (userScore === dealerScore) {
             alert('Its a draw!');
+            handleDrawSituation ();
         } else if (dealerScore > userScore && dealerScore < 22) {
             alert('Dealer won!');
+            handleLoosingSituation();
         } else if (dealerScore < userScore && dealerScore < 22) {
             alert('User won!');
+            handleWinningSituation();
         } else {
             alert('User won!');
+            handleWinningSituation();
         }
     }, 500);
     console.log('dealer: ', dealer);
 
+    renderDealersCards();
+    elRefDealerScore.innerHTML = 'Score: ' + dealerScore;
+
+}
+
+function handleWinningSituation (){
+    user.userBank = (user.bet * 2) + user.userBank;
+    user.bet = null;
+    elRefUserBank.innerHTML = "Bank: " + user.userBank;
+    user.userCards = [];
+    dealer.dealerCards = [];
+    elRefHitStandButtons.classList.add('hidden-area');
+    elRefBetButton.classList.remove('hidden-area');
+    renderDeckInContainer([], elRefDealersCards);
+    renderDeckInContainer([], elRefUsersCards);
+    countAndRenderUsersScore();
+    elRefDealerScore.innerHTML = 'Score: ';
+
+    gameStatisitcs.handsPlayed++;
+    gameStatisitcs.playerWins++;
+    renderStats();
+}
+
+function handleDrawSituation (){
+    user.userBank = user.bet + user.userBank;
+    user.bet = null;
+    user.userCards = [];
+    dealer.dealerCards = [];
+    elRefUserBank.innerHTML = "Bank: " + user.userBank;
+    elRefHitStandButtons.classList.add('hidden-area');
+    elRefBetButton.classList.remove('hidden-area');
+    renderDeckInContainer([], elRefDealersCards);
+    renderDeckInContainer([], elRefUsersCards);
+    countAndRenderUsersScore();
+    elRefDealerScore.innerHTML = 'Score: ';
+
+    gameStatisitcs.handsPlayed++;
+    renderStats();
+}
+
+function handleLoosingSituation() {
+    user.bet = null;
+    elRefUserBank.innerHTML = "Bank: " + user.userBank;
+    user.userCards = [];
+    dealer.dealerCards = [];
+    if (user.userBank === 0) {
+        if (confirm('You ran out of money! Start new game?')) {
+            init();
+        } else {
+            console.log('You pressed Cancel!');
+        }
+    }
+    elRefHitStandButtons.classList.add('hidden-area');
+    elRefBetButton.classList.remove('hidden-area');
+    renderDeckInContainer([], elRefDealersCards);
+    renderDeckInContainer([], elRefUsersCards);
+    countAndRenderUsersScore();
+    elRefDealerScore.innerHTML = 'Score: ';
+
+    gameStatisitcs.handsPlayed++;
+    gameStatisitcs.playerLoses++;
+    renderStats();
 }
 
 function checkForWinningOrLoosingHand() {
@@ -168,8 +276,10 @@ function checkForWinningOrLoosingHand() {
     });
     if (userScore === 21) {
         alert('Black Jack, You won!');
+        handleWinningSituation();
     } else if (userScore > 21) {
-        alert('You have lost your bet!');
+        alert('You BUST! Try again!');
+        handleLoosingSituation();
     }
 }
 
@@ -201,6 +311,17 @@ function dealTwoCardsToUserAndDealer() {
     console.log('user: ', user);
 }
 
+function functionShuffleDeckOfCards() {
+    const tempDeck = [...masterDeck];
+    shuffledDeck = [];
+    while (tempDeck.length) {
+      // Get a random index for a card still in the tempDeck
+      const rndIdx = Math.floor(Math.random() * tempDeck.length);
+      // Note the [0] after splice - this is because splice always returns an array and we just want the card object in that array
+      shuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
+    }
+}
+
 function renderShuffledDeck() {
     // Create a copy of the masterDeck (leave masterDeck untouched!)
     const tempDeck = [...masterDeck];
@@ -214,7 +335,7 @@ function renderShuffledDeck() {
     renderDeckInContainer(shuffledDeck, elRefShuffledDeckContainer);
   }
   
-  function renderDeckInContainer(deck, container) {
+function renderDeckInContainer(deck, container) {
     container.innerHTML = '';
     // Let's build the cards as a string of HTML
     // Use reduce when you want to 'reduce' the array into a single thing - in this case a string of HTML markup 
@@ -222,7 +343,7 @@ function renderShuffledDeck() {
       return html + `<div class="card ${card.face}"></div>`;
     }, '');
     container.innerHTML = cardsHtml;
-  }
+}
   
   function buildMasterDeck() {
     const deck = [];
@@ -240,10 +361,37 @@ function renderShuffledDeck() {
     return deck;
   }
   
-renderShuffledDeck();
+// renderShuffledDeck();
 
 
 // take our state (which our the variables we initialized in our init function)
 // and update the dom with those values
-function render(){
+function renderStats() {
+    elRefHandsPlayed.innerHTML = gameStatisitcs.handsPlayed;
+    elRefPlayerWins.innerHTML = gameStatisitcs.playerWins;
+    elRefPlayerLoses.innerHTML = gameStatisitcs.playerLoses;
+    elRefWinning.innerHTML = calculateWinningIndex(gameStatisitcs.handsPlayed, gameStatisitcs.playerWins);
 };
+
+function calculateWinningIndex(totalGames, winningGames){
+    console.log('winning games ', winningGames);
+    console.log('total games ', totalGames);
+    console.log('total ', winningGames/totalGames);
+    console.log('total ', (winningGames/totalGames)*100);
+    
+    if (totalGames === 0) {
+    return 0;
+    } else { 
+    return Math.floor((winningGames / totalGames) * 100);
+    } 
+}
+
+//To do next....
+// function renderEverythingElse() {
+//     elRefDealerScore.innerHTML = dealer.dealerTotal;
+//     elRefUserBank.innerHTML = "Bank: " + user.userBank;
+// }
+
+// function render() {
+//     // all trendering goes here, stats, user, dealer
+// }

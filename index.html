@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="www.twitter.com/cheeriottis"><!-- do I need this? -->
-  <title>BlackJack Game</title>
+  <title>Blackjack Online</title>
   <link href="https://fonts.googleapis.com/css?family=Asap+Condensed:600i,700" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href="css/card-deck-css/css/cardstarter.css" rel="stylesheet" />
@@ -18,35 +18,26 @@
   </header>
 
  
-  <div class="new-game">
-    <!-- input field player name -->
-     <!--<a href="#" class="action-button animate name" onclick="nameHandeler()"><input type="text" placeholder="Enter Your Name"></a>-->
-     <form id="name">Name: <input></input></form>
-     <button>Submit</button>
-  
-    <!-- input field total cash 
-    <a href="#" class="action-button animate bank"><input type="number" placeholder="$$$ Refill Your Bank"></a>-->
-    <form id="cash">Your Bank: <input></input></form>
-     <button id="button2">Submit</button>
-    
-    <!-- button start game -->
-   
-    <a href="#" class="action-button animate start">START GAME</a>
+  <div class="new-game" id="new-game-area">
+    <form>
+      Name: <input id="name-input"></input>
+      Your Bank: <input id="cash-input" type="number"></input>
+      <!-- button start game -->
+      <a href="#" class="action-button animate start name-bank-submit-button" >START GAME</a>
+    </form>
   </div>
 
-  <div class="main-area">
-
+  <div class="main-area hidden-area" id="main-area">
     <div class="left-panel">
-      <p id="update-user-bank">Total: $100</p>
-      <p class="userName">Player name: </p>
-      <div class="game-statistic">
+      <p id="update-user-bank">Total:</p>
+       <div class="game-statistic">
         <table>
             <caption>Game Statistics</caption>
             <tr></tr>
-            <tr><th>Hands Played</th><th>10</th></tr>
-            <tr><td>Player Wins</td><td>5</td></tr>
-            <tr><td>Player Loses</td><td>5</td></tr>
-            <tr><td>Winning, %</td><td>50%</td></tr>
+            <tr><th>Hands Played</th><th id="hands-played">10</th></tr>
+            <tr><td>Player Wins</td><td id="player-wins">5</td></tr>
+            <tr><td>Player Loses</td><td id=player-loses>5</td></tr>
+            <tr><td>Winning, %</td><td id="winning">50%</td></tr>
         </table>
       </div>
     </div>
@@ -65,12 +56,16 @@
         </div>
       </div>
       
-      <div>
+      <div class="hidden-area" id="hit-stand-buttons">
         <ul>
           <a href="#" class="action-button animate hit">HIT</a>
           <a href="#" class="action-button animate stand">STAND</a>
-
         </ul>
+      </div>
+
+      <div id="bet-button">
+        <input placeholder="Bet amountt (default: 5)" type="number" id="bet-input"></input>
+        <a href="#" class="action-button animate bet" >BET</a>
       </div>
     </div>
   </div>
@@ -81,10 +76,10 @@
  
      
 
-  <h3>Master Deck</h3>
+  <!-- <h3>Master Deck</h3>
   <section id="master-deck-container" class="card-container"></section>
   <h3>Shuffled Deck</h3>
-  <section id="shuffled-deck-container" class="card-container"></section>
+  <section id="shuffled-deck-container" class="card-container"></section> -->
 
 </body>
 
