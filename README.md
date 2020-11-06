@@ -8,7 +8,7 @@ SEI 10-19 Project 01: Broweser Game
 
 Please welcome my first game ever made called Blackjack Online.   
 
-I like gambling and everything related to **Las Vegas**. This is was the first city I've visited in the **United States** and I was inspired by special atmosphere. Since that time, I’ve enjoy playing Blackjack so my choice was obvious.
+I like gambling and everything related to **Las Vegas**. This is was the first city I've visited in the **United States** and I was inspired by special atmosphere. Since that time, I’ve enjoy playing Blackjack, so my choice was obvious.
 
 
 ### Game Rules
@@ -54,6 +54,7 @@ Player can find the game [Blackjack Online](https://aleksyara.github.io/game-pro
 Unfortunately, some essential functionality haven’t been included in this game so I’m planning to add following in the future: 
 
 * Make a DRY code and re-write render function;
-* Create a SPLIT, DOUBLE DOWN, and INCURACE
-* Make a stylee looks like 8-bit style
+* Create a SPLIT, DOUBLE DOWN, and INCURACE buttons, 
+* Add opportunity Aces are worth 1 or 11, whichever makes a better hand.
+* Make a style looks like 8-bit style
 * Link the sound/music files

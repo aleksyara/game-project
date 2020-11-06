@@ -23,7 +23,6 @@ let dealer = {
 /*----- app's state (variables) -----*/
 
 let shuffledDeck;
-// let winner;
 gameStatisitcs = {
     handsPlayed: 0,
     playerWins: 0,
@@ -59,21 +58,14 @@ const elRefWinning = document.getElementById('winning');
 /*----- event listeners -----*/
 document.querySelector('.hit').addEventListener('click', hitHandler);
 document.querySelector('.stand').addEventListener('click', standHandler);
-//document.getElementById('update-user-name').addEventListener('click', nameHandeler);
 document.querySelector('.name-bank-submit-button').addEventListener('click', nameBankSubmitButtonClickHandeler);
 document.querySelector('.bet').addEventListener('click', betHandler);
-
-
-
 
 
 /*----- functions -----*/
 init(); 
 
 // initialize our state when the app loads in the browser
-
-
-/////////////////////
 
 function init () {
     console.log('game firing');
@@ -84,17 +76,6 @@ function init () {
     user.userName = null;
     renderStats();
 }
-
-// ///
-function startNewGame() {
-    console.log('start new game');
-    //nameHandeler();
-    // show money and user name in user object
-    //renderUsersBank();
-    console.log('user: ', user);
-}
-//Submitting initial data
-//Name
 
 function nameBankSubmitButtonClickHandeler(){
    let name = elRefNameInput.value;
@@ -148,24 +129,19 @@ function betHandler() {
 
 
 function hitHandler() {
-    console.log('hit button click');
     user.userCards.push(shuffledDeck.shift());
-    console.log('user: ', user);
     renderUsersCards();
     countAndRenderUsersScore();
     setTimeout(function() {
         checkForWinningOrLoosingHand();
-
     }, 200);
 
 }
 
 function standHandler() {
-    console.log('stand button click');
     let dealerScore = dealer.dealerCards[0].value + dealer.dealerCards[1].value;
     let minScore = 17;
     
-
     let ctr = 0;
     while (dealerScore <= minScore) {
         let tempCard = shuffledDeck.shift();
@@ -177,8 +153,6 @@ function standHandler() {
         ctr++;
     }
 
-    console.log('dealerScore: ', dealerScore);
-    
     let userScore = 0;
     user.userCards.forEach(function(elem) {
         userScore += elem.value
